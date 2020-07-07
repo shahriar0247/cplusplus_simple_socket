@@ -73,15 +73,15 @@ int main()
 	// while loop: accpet and echo message back to client
 
 	char buf[4096];
-  char buf2[1024];
+	char buf2[1024] = "cool";;
 	while (true) {
 		ZeroMemory(buf, 4096);
 
 		//wait for client to send data
 
 		int bytesRecv = recv(clientSocket, buf, 4096, 0);
+		cout << buf << endl;
 
-	
 		if (bytesRecv == SOCKET_ERROR) {
 			cerr << "Error in recv(), Quitting" << endl;
 			break;
@@ -92,10 +92,10 @@ int main()
 			break;
 		}
 
-		
-    buf2 = "cool";
-		
-		send(clientSocket, buf2, sizeof(buf), 0);
+
+	
+
+		send(clientSocket, buf2, sizeof(buf2), 0);
 
 
 		// echo message back to client
